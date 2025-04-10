@@ -191,6 +191,12 @@ dropout2 = 0.20
 
 # Okay, what all needs to happen inside the for loop? Model defining, compiling, fitting, prediction, save the metrics and the model. Maybe we should do folderwise model prediction saving and the model saving, that way, we probably can use the improvelib code as it is. That would be much less work, let's do that?
 
+# Since we thought about making a directory for each bootsrap sample, we can do this with os python package - os.makedir() or os.makedirs()
+
+# We may also need to create a mainfolder to store in the bootstrap results
+
+os.makedirs("bootstrap_results", exist_ok = True)
+
 check = deepcdrgcn(dict_features, dict_adj_mat, samp_drug, samp_ach, cancer_dna_methy_model, cancer_gen_expr_model, cancer_gen_mut_model,  training = training, dropout1 = dropout1, dropout2 = dropout2)
 
 # fit the model              
