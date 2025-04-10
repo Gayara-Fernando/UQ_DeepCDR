@@ -245,7 +245,3 @@ val_scores = frm.compute_performance_scores(
 
 # save the model?
 check.save(os.path.join(modelpath, "DeepCDR_model"))
-
-
-# Since this code is working, we may need to adjust this code to store all the values/as we may not be directly able to adjust the code for improve lib? Maybe we cab adjust the code there to, but currently it seems like so much work.
-
