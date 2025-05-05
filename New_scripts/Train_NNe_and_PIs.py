@@ -423,7 +423,7 @@ frm.store_predictions_df(
     stage="test",
     y_col_name="auc",
     output_dir='bootstrap_inference',
-    input_dir=None)
+    input_dir='exp_result')
 
 # We need to save this model
 NNE_model.save('NNe_model')
