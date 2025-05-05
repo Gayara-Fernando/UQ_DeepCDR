@@ -415,8 +415,15 @@ for i in range(upper_l.shape[0]):
 
 print("Prediction Interval covarage: ", np.mean(catch_true_values))
 
-# save these errors? Or do we go ahead and straight away compute the coverages and widths?
-# We need to print the shapes of all bootstrap means andvariances before computing the PIs as if the shapes don't match the output will be weird.
+# We need to also compute the common metrics on the averaged predicted values
+# let's check a usual infer script for this
+frm.store_predictions_df(
+    y_true=y_test, 
+    y_pred=test_bts_mean, 
+    stage="test",
+    y_col_name="auc",
+    output_dir='bootstrap_inference',
+    input_dir=None)
 
 # We need to save this model
 NNE_model.save('NNe_model')
