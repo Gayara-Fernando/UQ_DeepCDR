@@ -229,7 +229,8 @@ def run(params: Dict):
                                   test_keep["Cell_Line"].values.reshape(-1,1), test_keep["AUC"].values.reshape(-1,1), batch_size=32,  shuffle = False)
 
     # location of the models
-    folder_path = 'bootstrap_results_all'
+    # folder_path = 'bootstrap_results_all'
+    folder_path = params['input_model_dir']
     
     ########## Get bootstrap predictions ###############
     
@@ -443,7 +444,15 @@ def run(params: Dict):
 
     print("Prediction Interval covarage: ", np.mean(catch_true_values))
     # We need to save this model
-    NNE_model.save('NNe_model')
+    # create a folder to save this model?
+    folder_name = 'NNe_model'
+
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+        print(f"Folder: '{folder_name}' created successfully")
+    else:
+        print(f"Folder: '{folder_name} already exists!'")
+    NNE_model.save(folder_name)
 
     # We need to also compute the common metrics on the averaged predicted values
     # let's check a usual infer script for this
