@@ -133,10 +133,6 @@ def run(params: Dict):
         dict: prediction performance scores computed on validation data
             according to the metrics_list.
     """
-    # # ------------------------------------------------------
-    # # [Req] Build model path 
-    # # ------------------------------------------------------
-    # modelpath = frm.build_model_path(model_file_name=params["model_file_name"], model_file_format=params["model_file_format"], model_dir=params["output_dir"])
 
     # ------------------------------------------------------
     # [Req] Create data names for train and val
