@@ -11,7 +11,8 @@ import warnings
 from pathlib import Path
 from pprint import pformat
 from typing import Dict, Union
-from create_data_generator import data_generator, batch_predict
+# from create_data_generator import data_generator, batch_predict
+from New_data_generator_with_tf import DataGenerator, batch_predict
 
 # load models for preprocessed data
 cancer_gen_expr_model = tf.keras.models.load_model(os.path.join('mc_dropout_exp_results',"cancer_gen_expr_model"))
@@ -145,7 +146,7 @@ generator_batch_size = 32
 test_steps = int(np.ceil(len(test_gcn_feats) / generator_batch_size))
 all_predicted_values = []
 for i in range(25):
-    preds_test, target_test = batch_predict(simplecdr, data_generator(test_gcn_feats, test_adj_list, test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["AUC"].values.reshape(-1,1), generator_batch_size, shuffle = False), test_steps)
+    preds_test, target_test = batch_predict(simplecdr, DataGenerator(test_gcn_feats, test_adj_list, test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["AUC"].values.reshape(-1,1), generator_batch_size, shuffle = False))
     all_predicted_values.append(preds_test)
 
 preds_df = pd.DataFrame(all_predicted_values)
