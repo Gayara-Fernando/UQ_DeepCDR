@@ -143,7 +143,6 @@ weights_new = simplecdr.get_weights()
 print(len(weights_train), len(weights_new))
 
 generator_batch_size = 32
-test_steps = int(np.ceil(len(test_gcn_feats) / generator_batch_size))
 all_predicted_values = []
 for i in range(25):
     preds_test, target_test = batch_predict(simplecdr, DataGenerator(test_gcn_feats, test_adj_list, test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["Cell_Line"].values.reshape(-1,1), test_keep["AUC"].values.reshape(-1,1), generator_batch_size, shuffle = False))
